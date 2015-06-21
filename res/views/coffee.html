@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="description" content="{% block description %}{% endblock %}" />
+<meta name="keywords" content="{% block keywords %}{% endblock %}" />
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet"
+	href="{{ app.request.basepath }}/assets/css/style.css" type="text/css"
+	media="all" />
+</head>
+<body>
+	<nav></nav>
+	<article>
+		<div id="wrapper">
+			<form name="coffee" method="post" action="">
+				{{ form_widget(coffeeForm) }} <input type="submit" value="simulate" />
+			</form>
+			{% if set %} <br />
+			<table>
+				<thead>
+					<tr>
+						<td>Threshold value</td>
+						<td>Average (drunk coffee)</td>
+					</tr>
+				</thead>
+				<tbody>
+					{% for key, value in set %}
+					<tr>
+						<td>{{ key }}</td>
+						<td>{{ value }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% endif %}
+			{% if pImage %} <br />
+				<img src="{{ app.request.basepath }}/assets/img/chart.php" />
+			{% endif %}
+		</div>
+	</article>
+</body>
+</html>
